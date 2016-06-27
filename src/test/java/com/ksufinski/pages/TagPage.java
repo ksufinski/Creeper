@@ -12,8 +12,8 @@ import org.openqa.selenium.WebElement;
 import java.util.concurrent.TimeUnit;
 
 
-@DefaultUrl("https://instagram.com/explore/tags/")
-//@DefaultUrl("https://instagram.com/gvan_irman/")
+//@DefaultUrl("https://instagram.com/explore/tags/")
+@DefaultUrl("https://www.instagram.com/rozanov_z/")
 @NamedUrls(
         {
                 @NamedUrl(name = "custom", url = "/{1}")
@@ -28,8 +28,10 @@ public class TagPage extends PageObject {
     private static final Integer CATALOG_WAIT_FOR_TIMEOUT = 20000;
     public TagPage(WebDriver driver) {super(driver, CATALOG_WAIT_FOR_TIMEOUT);}
 
-    //@FindBy(xpath = "//*[contains(@class,'PostsGridItem')]")  // for userpages
-    @FindBy(xpath = "//*[contains(@class,'PostsGridItem')]")
+
+
+   // @FindBy(css = "div>a") //for tags
+    @FindBy( css = "._ovg3g") //for peoplea
     private WebElement photoFromTag;
 
 
