@@ -28,20 +28,20 @@ public class UserSteps extends ScenarioSteps {
     }
 
     @Step("Login")
-    public void loginFromHomePage(String login, String password) {
+    public void loginFromHomePage(String login, String password) throws InterruptedException {
         loginPage.open();
         loginPage.setLogin(login);
         loginPage.setPassword(password);
         loginPage.clickLoginButton();
     }
 
-    @Step("Go to teg page")
-    public void getTegPage(String numberOfPhotos){
+    @Step("Go to tag page")
+    public void getTegPage(String numberOfPhotos) throws InterruptedException {
         tagPage.open("custom", new String[] {keyWords.getProperty("tag")});
         tagPage.clickOnPhotoFromTag();
         media.likeAndNextPhoto(numberOfPhotos, keyWords.getProperty("tag") );
-       // media.clickOnLikeButton();
-       // media.clickOnRightArrow();
+        //media.clickOnLikeButton();
+      //  media.clickOnRightArrow();
 
     }
     @Step("Open UserAccount")
