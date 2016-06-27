@@ -36,7 +36,7 @@ public class Creep {
     @Before
     public void myTest()  throws Exception
     {
-        System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         webdriver.manage().window().maximize();
     }
 
