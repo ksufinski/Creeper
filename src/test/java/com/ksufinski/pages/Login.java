@@ -15,13 +15,13 @@ public class Login extends PageObject {
     public Login(WebDriver driver) {super(driver, CATALOG_WAIT_FOR_TIMEOUT);}
 
 
-    @FindBy (id="lfFieldInputUsername")
+    @FindBy (name = "username")
     private WebElement emailInput;
 
-    @FindBy(id = "lfFieldInputPassword")
+    @FindBy(name = "password")
     private WebElementFacade passwordInput;
 
-    @FindBy(xpath = "//*[contains(@class,'loginButton')]")
+    @FindBy (css = "button")
     private WebElementFacade submitLoginButton;
 
     public void setLogin(String emailInputText) {element(emailInput).type(emailInputText);}
