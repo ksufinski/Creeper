@@ -14,10 +14,11 @@ public class Media extends PageObject {
 
 
 
-    @FindBy(xpath = "//button[contains(@class,'likeButton')]")
-    private WebElement likeButton;
+    @FindBy (css = ".coreSpriteHeartOpen")
+    private WebElementFacade likeButton;
 
-    @FindBy(xpath = "//a[contains(@class,'rightArrow')]")
+    //@FindBy(xpath = "//a[contains(@class,'rightArrow')]")
+    @FindBy(css = "a.coreSpriteRightPaginationArrow")
     private WebElement rightArrow;
 
     @FindBy(xpath = "//a[contains(@class,'ownerUserLink')]")
@@ -36,7 +37,7 @@ public class Media extends PageObject {
         rightArrow.sendKeys(Keys.RIGHT);
     }
 
-    public void likeAndNextPhoto(String numberOfPhotos, String tag){
+    public void likeAndNextPhoto(String numberOfPhotos, String tag) throws InterruptedException {
         int nof = Integer.parseInt(numberOfPhotos);
         int likeCounter=0;
         int process = 0;
@@ -47,19 +48,31 @@ public class Media extends PageObject {
 
         for(int i=0; i < nof ;i++) {
             process++;
-            if(/*userNames.contains(userName.getText())*/followButton.getText().equals("FOLLOWING") ){
+            System.out.print("\nProcess "+process
+                    +"\t Likes "+likeCounter);
+           /* if(followButton.getText().equals("FOLLOWING") ){
                 System.out.print("\n"+process);
                 rightArrow.sendKeys(Keys.RIGHT);
                 continue;
+            }*/
+
+            if(!likeButton.getText().equals("Like")){
+                rightArrow.sendKeys(Keys.RIGHT);
+                Thread.sleep(2000);
             }
+            rightArrow.sendKeys(Keys.RIGHT);
+            likeButton.click();
+            Thread.sleep(2000);
 
-
-            if(likeButton.getText().equals("Like")) {   // you have already liked
+/*
+            if(likeButton.getText().equals("Like")) {
                 likeButton.click();
                 likeCounter++;
+                Thread.sleep(2000);
             }
+*/
 
-            if(followButton.getText().equals("FOLLOW")) {
+             /*if(followButton.getText().equals("FOLLOW")) {
                 plusOne = false;
                 followButton.click();
                 followButton.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilClickable();
@@ -68,10 +81,12 @@ public class Media extends PageObject {
             }
             if(plusOne==true){
                 person++;
-                System.out.print("\nGot "+person+" :"+userName.getText());
-                userNames.add(userName.getText());}
+                System.out.print("\nGot " + person + " :" + userName.getText());
+                userNames.add(userName.getText());}*/
+          //likeButton.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable();
+            //String a= likeButton.getText();
+            //System.out.println(a);
 
-            rightArrow.sendKeys(Keys.RIGHT);
 
         }
         System.out.print("\n# of likes :"+likeCounter+
